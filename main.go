@@ -3,16 +3,15 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"os"
-	"strconv"
 	"strings"
 	"time"
 
 	"github.com/gocolly/colly"
 	"github.com/gocolly/colly/debug"
+	"github.com/shopspring/decimal"
 )
 
 type Datax struct {
@@ -20,8 +19,8 @@ type Datax struct {
 }
 
 type Data struct {
-	Timestamp time.Time `json:"timestamp"`
-	Temp      float64   `json:"temp"`
+	Timestamp time.Time       `json:"timestamp"`
+	Temp      decimal.Decimal `json:"temp"`
 }
 
 // The function PersistJSON encodes a given value as JSON and writes it to a file with the specified filename.
@@ -34,6 +33,10 @@ func PersistJSON(filename string, v any) {
 	fo.Write(buffer.Bytes())
 }
 
+func main() {
+	ScrapeTemperatureAndPersist("https://www.thewave.com/live-updates/")
+}
+
 func UnmarshalJSON(filename string, v any) {
 	jsonFile, _ := os.Open(filename)
 	byteValue, _ := io.ReadAll(jsonFile)
@@ -44,15 +47,20 @@ func UnmarshalJSON(filename string, v any) {
 func ScrapeTemperatureAndPersist(url string) {
 	out := scrapeTemperatureTrim(url)
 
-	fout, _ := strconv.ParseFloat(out, 32)
+	// fout, _ := strconv.ParseFloat(out, 32)
 
+	fout, _ := decimal.NewFromString(out)
+
+	// File will be created if it doesn't exist already
 	fn := "./temperature.json"
 
 	var dx Datax
 	UnmarshalJSON(fn, &dx)
 
+	loc, _ := time.LoadLocation("Europe/London")
+
 	d := Data{
-		Timestamp: time.Now(),
+		Timestamp: time.Now(), //TODO: UK Time - BST
 		Temp:      fout,
 	}
 
@@ -91,9 +99,9 @@ func scrapeTemperatureFull(url string) string {
 	// 	fmt.Println("Responding: ", string(r.Body))
 	// })
 
-	c.OnError(func(r *colly.Response, err error) {
-		fmt.Println("Request URL: ", r.Request.URL, " failed with response: ", r, "\nError: ", err)
-	})
+	// c.OnError(func(r *colly.Response, err error) {
+	// 	fmt.Println("Request URL: ", r.Request.URL, " failed with response: ", r, "\nError: ", err)
+	// })
 
 	// https://benjamincongdon.me/blog/2018/03/01/Scraping-the-Web-in-Golang-with-Colly-and-Goquery/
 
@@ -119,6 +127,8 @@ func scrapeTemperatureFull(url string) string {
 	})
 
 	c.Visit(url)
+
+	// fmt.Println(out)
 
 	return out
 }

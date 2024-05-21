@@ -57,7 +57,7 @@ func ScrapeTemperatureAndPersist(url string) {
 	var dx Datax
 	UnmarshalJSON(fn, &dx)
 
-	loc, _ := time.LoadLocation("Europe/London")
+	// loc, _ := time.LoadLocation("Europe/London")
 
 	d := Data{
 		Timestamp: time.Now(), //TODO: UK Time - BST

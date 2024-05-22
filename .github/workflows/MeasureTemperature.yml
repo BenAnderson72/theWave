@@ -33,6 +33,7 @@ jobs:
         run: |
           go run main.go
 
+# there may be a better way of doing this with GITHUB_TOKEN
       - name: Push temperature.json to this repo
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:

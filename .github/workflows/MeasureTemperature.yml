@@ -20,11 +20,12 @@ jobs:
       - name: Get current date
         id: date
         run: echo $(date)
-      
-      - name: Setup Go
-        uses: actions/setup-go@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
         with:
-          go-version: '1.19.x'
+          go-version: '1.22.x'
+      
       - name: Install dependencies
         run: go get .
       - name: Run main to grab temp

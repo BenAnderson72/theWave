@@ -28,6 +28,20 @@ jobs:
       
       - name: Install dependencies
         run: go get .
+        
       - name: Run main to grab temp
         run: |
           go run main.go
+
+      - name: Push temperature.json to this repo
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} 
+        with:
+          source_file: './temperature.json'
+          destination_repo: 'BenAnderson72/theWave'
+          # destination_folder: 'surf_forecast' # optional
+          user_email: 'ben.m.anderson@gmail.com'
+          user_name: 'BenAnderson72'           
+          commit_message: 'Pushing temperature.json with remote push'
+

@@ -14,13 +14,15 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-type Datax struct {
-	Temps []Data `json:"temps"`
+type Root struct {
+	Temps []Temp `json:"temps"`
 }
 
-type Data struct {
-	Timestamp time.Time       `json:"timestamp"`
-	Temp      decimal.Decimal `json:"temp"`
+type Temp struct {
+	Timestamp   time.Time       `json:"timestamp"`
+	Description string          `json:"desc"`
+	Water       decimal.Decimal `json:"water"`
+	Air         decimal.Decimal `json:"air"`
 }
 
 // The function PersistJSON encodes a given value as JSON and writes it to a file with the specified filename.
@@ -45,40 +47,21 @@ func UnmarshalJSON(filename string, v any) {
 }
 
 func ScrapeTemperatureAndPersist(url string) {
-	out := scrapeTemperatureTrim(url)
-
-	// fout, _ := strconv.ParseFloat(out, 32)
-
-	fout, _ := decimal.NewFromString(out)
+	d := scrapeTemperature(url)
 
 	// File will be created if it doesn't exist already
 	fn := "./temperature.json"
 
-	var dx Datax
+	var dx Root
 	UnmarshalJSON(fn, &dx)
-
-	// loc, _ := time.LoadLocation("Europe/London")
-
-	d := Data{
-		Timestamp: time.Now(), //TODO: UK Time - BST
-		Temp:      fout,
-	}
 
 	dx.Temps = append(dx.Temps, d)
 
 	PersistJSON(fn, dx)
 
-	// temps := dx.Temps
-
 }
 
-func scrapeTemperatureTrim(url string) string {
-
-	out := scrapeTemperatureFull(url)
-	return strings.ReplaceAll(out, "°C", "")
-}
-
-func scrapeTemperatureFull(url string) string {
+func scrapeTemperature(url string) Temp {
 
 	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
 
@@ -89,7 +72,9 @@ func scrapeTemperatureFull(url string) string {
 		c.WithTransport(t)
 	}
 
-	out := "Nothing"
+	// out := "Nothing"
+
+	var out [3]string
 
 	// c.OnRequest(func(r *colly.Request) {
 	// 	fmt.Println("Visiting: ", r.URL)
@@ -105,21 +90,41 @@ func scrapeTemperatureFull(url string) string {
 
 	// https://benjamincongdon.me/blog/2018/03/01/Scraping-the-Web-in-Golang-with-Colly-and-Goquery/
 
-	i := 0
-
 	c.OnHTML("div.flex", func(d *colly.HTMLElement) {
-		if d.Attr("class") == "flex space-x-1 font-normal" {
-			// i := d.DOM.Children().Length()
-			// fmt.Println(i)
 
-			// x := d.DOM.Children()
+		i := 0
+
+		if d.Attr("class") == "flex space-x-1 font-normal mb-2" {
+
+			d.ForEach("p.text-sm", func(_ int, p *colly.HTMLElement) {
+
+				switch i {
+				case 0:
+					out[0] = strings.TrimSpace(p.Text)
+				case 1:
+					out[1] = strings.ReplaceAll(p.Text, "°C", "")
+					out[1] = strings.TrimSpace(out[1])
+				}
+
+				i++
+
+			})
+
+		}
+
+		i = 0
+
+		if d.Attr("class") == "flex space-x-1 font-normal" {
 
 			d.ForEach("p.text-sm", func(_ int, p *colly.HTMLElement) {
 
 				if i == 1 {
-					out = strings.TrimSpace(p.Text)
+					out[2] = strings.ReplaceAll(p.Text, "°C", "")
+					out[2] = strings.TrimSpace(out[2])
 				}
+
 				i++
+				// return (i > 1)
 
 			})
 
@@ -129,6 +134,15 @@ func scrapeTemperatureFull(url string) string {
 	c.Visit(url)
 
 	// fmt.Println(out)
+	tA, _ := decimal.NewFromString(out[1])
+	tW, _ := decimal.NewFromString(out[2])
 
-	return out
+	// loc, _ := time.LoadLocation("Europe/London")
+	return Temp{
+		Timestamp:   time.Now(), //TODO: UK Time - BST
+		Description: out[0],
+		Air:         tA,
+		Water:       tW,
+	}
+
 }

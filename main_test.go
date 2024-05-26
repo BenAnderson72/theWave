@@ -3,48 +3,48 @@ package main
 import (
 	"regexp"
 	"testing"
+
+	"github.com/shopspring/decimal"
 )
 
-func Test_ScrapeFull(t *testing.T) {
+func Test_Scrape(t *testing.T) {
 
-	act := scrapeTemperatureFull("https://www.thewave.com/live-updates/")
+	act := scrapeTemperature("https://www.thewave.com/live-updates/")
 
-	matched, _ := regexp.MatchString(`^.\d{1,2}\.\d°C$`, act)
+	matched, _ := regexp.MatchString(`^.\d{1,2}(\.\d)*$`, act.Water.String())
 
 	if !matched {
-		t.Errorf("expected something ending with °C, got |%s|", act)
+		t.Errorf("expected decimal Water temp, got |%s|", act.Water)
+	}
+
+	matched, _ = regexp.MatchString(`^.\d{1,2}(\.\d)*$`, act.Air.String())
+
+	if !matched {
+		t.Errorf("expected decimal Air temp, got |%s|", act.Air)
 	}
 
 }
 
-func Test_ScrapeTrim(t *testing.T) {
+func Test_ScrapeStatic(t *testing.T) {
 
-	act := scrapeTemperatureTrim("https://www.thewave.com/live-updates/")
+	act := scrapeTemperature("file://./static.html")
 
-	matched, _ := regexp.MatchString(`^.\d{1,2}\.\d°C$`, act)
+	tW, _ := decimal.NewFromString("19.3")
+	tA, _ := decimal.NewFromString("19")
+	desc := "Broken Clouds &"
 
-	if matched {
-		t.Errorf("expected something ending without °C, got |%s|", act)
+	if !decimal.Decimal.Equal(act.Water, tW) {
+		t.Errorf("expected %s, got %s", tW, act.Water)
 	}
 
-}
-
-func Test_ScrapeStaticFull(t *testing.T) {
-	exp := "19.3°C"
-	act := scrapeTemperatureFull("file://./static.html")
-
-	if act != exp {
-		t.Errorf("expected %s, got %s", exp, act)
+	if !decimal.Decimal.Equal(act.Air, tA) {
+		t.Errorf("expected %s, got %s", tA, act.Air)
 	}
-}
 
-func Test_ScrapeStaticTrim(t *testing.T) {
-	exp := "19.3"
-	act := scrapeTemperatureTrim("file://./static.html")
-
-	if act != exp {
-		t.Errorf("expected %s, got %s", exp, act)
+	if act.Description != desc {
+		t.Errorf("expected %s, got %s", desc, act)
 	}
+
 }
 
 func Test_ScrapeTemperatureAndPersist(t *testing.T) {

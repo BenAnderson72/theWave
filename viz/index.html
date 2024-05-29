@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<body>
+  <div id="tempChart" style="width:100%; max-width:600px; height:500px;"></div>
+
+  <script type="text/javascript">
+
+    // Load the Visualization API and the piechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var jsonData = $.ajax({
+        url: "temperature.json",
+        dataType: "json",
+        async: false
+        // success: function (data) {
+        //console.log(data);
+        //}
+      }).responseJSON;
+
+      var data = new google.visualization.DataTable();
+
+      Object.entries(jsonData['temps']).forEach(function (jsonRowA, indexRow) {
+
+        jsonRow = jsonRowA[1]
+
+        // add columns
+        if (indexRow === 0) {
+          for (var column in jsonRow)
+            switch (column) {
+              case 'timestamp': data.addColumn('string', column); break;
+              case 'air':
+              case 'desc': break; //ignore
+              case 'water': data.addColumn('number', column); break;
+            }
+        }
+
+
+        // add row
+        var dataRow = [];
+        for (var column in jsonRow) {
+          switch (column) {
+            case 'timestamp': dataRow.push(jsonRow[column]); break;
+            case 'air':
+            case 'desc': break; //ignore
+            case 'water': dataRow.push(parseFloat(jsonRow[column])); break;
+          }
+        }
+
+        if (dataRow.length > 0) {
+          data.addRow(dataRow);
+        }
+      });
+
+      var chart = new google.visualization.LineChart(document.getElementById('tempChart'));
+      chart.draw(data, { width: 2000, height: 400 });
+    }
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,3 +1,7 @@
 https://www.w3schools.com/ai/ai_google_chart.asp
 
 https://stackoverflow.com/questions/66201509/parse-json-to-google-charts
+
+https://preview.keenthemes.com/html/keen/docs/charts/google-charts/line
+
+http://www.jayperetz.com/projects/ajax-json/index.html#:~:text=First%20you%20need%20to%20load,be%20in%20this%20custom%20function.

@@ -17,7 +17,7 @@
     function drawChart() {
 
       var jsonData = $.ajax({
-        url: "temperature.json",
+        url: "../temperature.json",
         dataType: "json",
         async: false
         // success: function (data) {
@@ -35,7 +35,7 @@
         if (indexRow === 0) {
           for (var column in jsonRow)
             switch (column) {
-              case 'timestamp': data.addColumn('string', column); break;
+              case 'timestamp': data.addColumn('date', column); break;
               case 'air':
               case 'desc': break; //ignore
               case 'water': data.addColumn('number', column); break;
@@ -47,7 +47,7 @@
         var dataRow = [];
         for (var column in jsonRow) {
           switch (column) {
-            case 'timestamp': dataRow.push(jsonRow[column]); break;
+            case 'timestamp': dataRow.push(new Date(jsonRow[column])); break;
             case 'air':
             case 'desc': break; //ignore
             case 'water': dataRow.push(parseFloat(jsonRow[column])); break;
@@ -59,8 +59,42 @@
         }
       });
 
+      var options = {
+          title: 'Water Temperature [°C] at The Wave',
+          width: 2000,
+          height: 800,
+          hAxis: {
+          // viewWindow: {
+          //   min: new Date(2024, 4, 31, 18),
+          //   max: new Date(2025, 0, 3, 1)
+          // },
+          // gridlines: {
+          //   count: -1,
+          //   units: {
+          //     days: {format: ['MMM dd']},
+          //     hours: {format: ['HH:mm', 'ha']},
+          //   }
+          // },
+          // minorGridlines: {
+          //   units: {
+          //     hours: {format: ['hh:mm:ss a', 'ha']},
+          //     minutes: {format: ['HH:mm a Z', ':mm']}
+          //   }
+          // }
+        }
+          // hAxis: {
+          //   format: 'M/d/yy',
+          //   gridlines: {count: 15}
+          // }
+          // ,
+          // vAxis: {
+          //   gridlines: {color: 'none'},
+          //   minValue: 0
+          // }
+        };
+
       var chart = new google.visualization.LineChart(document.getElementById('tempChart'));
-      chart.draw(data, { width: 2000, height: 400 });
+      chart.draw(data, options);
     }
 
 

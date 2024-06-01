@@ -1385,6 +1385,12 @@
             "desc": "Broken Clouds \u0026",
             "water": "17.6",
             "air": "19"
+        },
+        {
+            "timestamp": "2024-06-01T08:01:53.858371177Z",
+            "desc": "Broken Clouds \u0026",
+            "water": "17.5",
+            "air": "19"
         }
     ]
 }

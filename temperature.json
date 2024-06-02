@@ -2,1533 +2,1027 @@
     "temps": [
         {
             "timestamp": "2024-05-21T05:47:49.29405679Z",
-            "desc": "",
-            "water": "19.9",
-            "air": "0"
+            "water": "19.9"
         },
         {
             "timestamp": "2024-05-22T21:56:04.815011793Z",
-            "desc": "",
-            "water": "18.7",
-            "air": "0"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-22T22:00:23.469068153Z",
-            "desc": "",
-            "water": "18.7",
-            "air": "0"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-22T22:07:36.905257501Z",
-            "desc": "",
-            "water": "18.7",
-            "air": "0"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-22T23:01:50.288832446Z",
-            "desc": "",
-            "water": "18.7",
-            "air": "0"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-23T00:05:19.808627904Z",
-            "desc": "",
-            "water": "18.7",
-            "air": "0"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-23T01:25:59.713696582Z",
-            "desc": "",
-            "water": "18.7",
-            "air": "0"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-23T02:12:36.068193247Z",
-            "desc": "",
-            "water": "18.6",
-            "air": "0"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-05-23T03:02:09.405659837Z",
-            "desc": "",
-            "water": "18.5",
-            "air": "0"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-23T04:01:52.833780153Z",
-            "desc": "",
-            "water": "18.4",
-            "air": "0"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-23T05:02:27.821735078Z",
-            "desc": "",
-            "water": "18.2",
-            "air": "0"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-05-23T06:02:21.278653866Z",
-            "desc": "",
-            "water": "18",
-            "air": "0"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-23T07:02:11.008238618Z",
-            "desc": "",
-            "water": "17.8",
-            "air": "0"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-23T08:02:12.394596457Z",
-            "desc": "",
-            "water": "17.5",
-            "air": "0"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-23T09:02:04.615182423Z",
-            "desc": "",
-            "water": "17.5",
-            "air": "0"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-23T10:01:57.302778704Z",
-            "desc": "",
-            "water": "17.1",
-            "air": "0"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-23T11:01:46.230639968Z",
-            "desc": "",
-            "water": "17.5",
-            "air": "0"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-23T12:02:26.370715074Z",
-            "desc": "",
-            "water": "17.6",
-            "air": "0"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-23T13:02:31.326897205Z",
-            "desc": "",
-            "water": "17.5",
-            "air": "0"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-23T14:01:39.847043912Z",
-            "desc": "",
-            "water": "17.9",
-            "air": "0"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-23T15:02:06.315845304Z",
-            "desc": "",
-            "water": "17.9",
-            "air": "0"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-23T16:02:08.776544076Z",
-            "desc": "",
-            "water": "17.8",
-            "air": "0"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-23T17:01:38.635521582Z",
-            "desc": "",
-            "water": "17.6",
-            "air": "0"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-23T18:02:07.99210931Z",
-            "desc": "",
-            "water": "17.8",
-            "air": "0"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-23T19:01:58.144234706Z",
-            "desc": "",
-            "water": "17.7",
-            "air": "0"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-23T20:01:50.677089378Z",
-            "desc": "",
-            "water": "17.6",
-            "air": "0"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-23T21:02:13.981123009Z",
-            "desc": "",
-            "water": "17.7",
-            "air": "0"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-23T22:01:47.451847669Z",
-            "desc": "",
-            "water": "17.4",
-            "air": "0"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-23T23:02:04.98606686Z",
-            "desc": "",
-            "water": "17.4",
-            "air": "0"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-24T00:06:06.924554534Z",
-            "desc": "",
-            "water": "17.3",
-            "air": "0"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-24T01:26:22.70572573Z",
-            "desc": "",
-            "water": "17.3",
-            "air": "0"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-24T02:13:03.681490027Z",
-            "desc": "",
-            "water": "17.3",
-            "air": "0"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-24T03:01:47.266294178Z",
-            "desc": "",
-            "water": "17.2",
-            "air": "0"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-24T04:02:12.578285175Z",
-            "desc": "",
-            "water": "17.1",
-            "air": "0"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-24T05:02:02.855781322Z",
-            "desc": "",
-            "water": "17",
-            "air": "0"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-24T06:02:04.292929027Z",
-            "desc": "",
-            "water": "16.9",
-            "air": "0"
+            "water": "16.9"
         },
         {
             "timestamp": "2024-05-24T07:02:07.378328474Z",
-            "desc": "",
-            "water": "16.8",
-            "air": "0"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-24T08:02:13.429280483Z",
-            "desc": "",
-            "water": "16.8",
-            "air": "0"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-24T09:02:00.992762876Z",
-            "desc": "",
-            "water": "16.6",
-            "air": "0"
+            "water": "16.6"
         },
         {
             "timestamp": "2024-05-24T10:02:11.264748185Z",
-            "desc": "",
-            "water": "16.7",
-            "air": "0"
+            "water": "16.7"
         },
         {
             "timestamp": "2024-05-24T11:01:49.429070198Z",
-            "desc": "",
-            "water": "16.7",
-            "air": "0"
+            "water": "16.7"
         },
         {
             "timestamp": "2024-05-24T12:02:28.540693354Z",
-            "desc": "",
-            "water": "16.8",
-            "air": "0"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-24T13:02:50.37051517Z",
-            "desc": "",
-            "water": "16.8",
-            "air": "0"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-24T14:01:39.648579648Z",
-            "desc": "",
-            "water": "16.8",
-            "air": "0"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-24T15:01:46.043251164Z",
-            "desc": "",
-            "water": "16.9",
-            "air": "0"
+            "water": "16.9"
         },
         {
             "timestamp": "2024-05-24T16:01:52.68238716Z",
-            "desc": "",
-            "water": "16.8",
-            "air": "0"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-24T17:01:46.148706999Z",
-            "desc": "",
-            "water": "17",
-            "air": "0"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-24T18:02:02.61026973Z",
-            "desc": "",
-            "water": "17.2",
-            "air": "0"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-24T19:01:47.468414727Z",
-            "desc": "",
-            "water": "17.4",
-            "air": "0"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-24T20:01:57.291508443Z",
-            "desc": "",
-            "water": "17.4",
-            "air": "0"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-24T21:01:43.734497884Z",
-            "desc": "",
-            "water": "17.2",
-            "air": "0"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-24T22:01:53.652319092Z",
-            "desc": "",
-            "water": "17.2",
-            "air": "0"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-24T23:02:04.504987837Z",
-            "desc": "",
-            "water": "17.1",
-            "air": "0"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-25T00:05:14.373668198Z",
-            "desc": "",
-            "water": "17.1",
-            "air": "0"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-25T01:25:25.242572682Z",
-            "desc": "",
-            "water": "17",
-            "air": "0"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-25T02:11:47.298321927Z",
-            "desc": "",
-            "water": "17",
-            "air": "0"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-25T03:02:03.026668914Z",
-            "desc": "",
-            "water": "16.9",
-            "air": "0"
+            "water": "16.9"
         },
         {
             "timestamp": "2024-05-25T04:02:13.874580091Z",
-            "desc": "",
-            "water": "16.7",
-            "air": "0"
+            "water": "16.7"
         },
         {
             "timestamp": "2024-05-25T05:01:36.545663823Z",
-            "desc": "",
-            "water": "16.7",
-            "air": "0"
+            "water": "16.7"
         },
         {
             "timestamp": "2024-05-25T06:02:12.638362944Z",
-            "desc": "",
-            "water": "16.6",
-            "air": "0"
+            "water": "16.6"
         },
         {
             "timestamp": "2024-05-25T07:02:01.711765314Z",
-            "desc": "",
-            "water": "16.5",
-            "air": "0"
+            "water": "16.5"
         },
         {
             "timestamp": "2024-05-25T08:01:53.632644045Z",
-            "desc": "",
-            "water": "16.2",
-            "air": "0"
+            "water": "16.2"
         },
         {
             "timestamp": "2024-05-25T09:01:53.536108094Z",
-            "desc": "",
-            "water": "16.4",
-            "air": "0"
+            "water": "16.4"
         },
         {
             "timestamp": "2024-05-25T10:01:39.398268075Z",
-            "desc": "",
-            "water": "16.5",
-            "air": "0"
+            "water": "16.5"
         },
         {
             "timestamp": "2024-05-25T11:01:56.72590947Z",
-            "desc": "",
-            "water": "16.7",
-            "air": "0"
+            "water": "16.7"
         },
         {
             "timestamp": "2024-05-25T12:02:18.354345573Z",
-            "desc": "",
-            "water": "17",
-            "air": "0"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-25T13:01:41.367422304Z",
-            "desc": "",
-            "water": "17.1",
-            "air": "0"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-25T14:01:44.9421586Z",
-            "desc": "",
-            "water": "17.4",
-            "air": "0"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-25T15:01:59.473632872Z",
-            "desc": "",
-            "water": "17.8",
-            "air": "0"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-25T16:02:10.597924659Z",
-            "desc": "",
-            "water": "18.1",
-            "air": "0"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-05-25T17:01:38.202368847Z",
-            "desc": "",
-            "water": "18.4",
-            "air": "0"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-25T18:01:38.38669528Z",
-            "desc": "",
-            "water": "18.4",
-            "air": "0"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-25T19:01:32.73937055Z",
-            "desc": "",
-            "water": "18.4",
-            "air": "0"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-25T20:01:51.023950599Z",
-            "desc": "",
-            "water": "18.4",
-            "air": "0"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-25T21:01:37.419272001Z",
-            "desc": "",
-            "water": "18.4",
-            "air": "0"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-25T22:01:46.066007627Z",
-            "desc": "",
-            "water": "18.4",
-            "air": "0"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-25T23:01:51.630224184Z",
-            "desc": "",
-            "water": "18.2",
-            "air": "0"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-05-26T00:05:43.692839561Z",
-            "desc": "",
-            "water": "18.2",
-            "air": "0"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-05-26T01:28:00.807838328Z",
-            "desc": "",
-            "water": "18.2",
-            "air": "0"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-05-26T02:14:17.746334663Z",
-            "desc": "",
-            "water": "18.1",
-            "air": "0"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-05-26T03:02:20.226171717Z",
-            "desc": "",
-            "water": "18",
-            "air": "0"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-26T04:02:17.807672229Z",
-            "desc": "",
-            "water": "17.9",
-            "air": "0"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-26T05:01:54.266653359Z",
-            "desc": "",
-            "water": "17.8",
-            "air": "0"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-26T06:02:28.93651021Z",
-            "desc": "",
-            "water": "17.7",
-            "air": "0"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-26T07:01:46.475394813Z",
-            "desc": "",
-            "water": "17.6",
-            "air": "0"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-26T08:02:09.783136385Z",
-            "desc": "",
-            "water": "17.5",
-            "air": "0"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-26T09:01:41.145305369Z",
-            "desc": "",
-            "water": "17.5",
-            "air": "0"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-26T09:05:00.281378963Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-26T09:07:30.201188789Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-26T10:01:47.305665981Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-26T11:01:49.723240029Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-26T12:02:16.309724106Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-26T13:01:44.783060545Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.2",
-            "air": "19"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-05-26T14:01:57.978755006Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.2",
-            "air": "19"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-05-26T15:01:42.033714186Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-05-26T16:02:09.409457332Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-26T17:01:38.549888772Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-26T18:02:11.07211305Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-05-26T19:01:34.353942512Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-26T20:01:51.373171839Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.7",
-            "air": "19"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-26T21:02:14.40706587Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-05-26T22:01:36.994351342Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-26T23:01:38.895671491Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-27T00:05:30.751166011Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-05-27T01:27:08.943362344Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-05-27T02:13:26.48419691Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-27T03:02:12.546420149Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-27T04:02:15.338912774Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-27T05:01:54.422468757Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-27T06:03:00.231160216Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-27T07:03:09.051367969Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-27T08:02:09.417245684Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.1",
-            "air": "19"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-27T09:02:17.522260738Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-27T10:01:52.269271532Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-27T11:01:40.301805419Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-27T12:02:26.379394398Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-27T13:03:03.847000179Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.9",
-            "air": "19"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-27T14:02:17.122125653Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-27T15:02:01.678160487Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-05-27T16:01:54.863537456Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-27T17:02:14.450454237Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-05-27T18:01:53.635994928Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.7",
-            "air": "19"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-27T19:01:32.38777683Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.7",
-            "air": "19"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-05-27T20:02:12.273932214Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-05-27T21:02:00.720589688Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-05-27T22:01:41.273992095Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-27T23:01:45.497353828Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-28T00:05:34.720717409Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-28T01:26:26.750613324Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-05-28T02:13:30.741295884Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.2",
-            "air": "19"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-05-28T03:02:30.105718644Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-28T04:03:00.461390713Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-28T05:02:09.080904439Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.9",
-            "air": "19"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-28T06:02:18.267329602Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-28T07:01:58.020717143Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-28T08:02:18.168300249Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-28T09:01:47.94023825Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-28T10:02:05.383890893Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-28T11:01:58.679799817Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-28T12:02:27.799911571Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-28T13:02:59.445605017Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-28T14:01:45.525085288Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-28T15:02:36.950708803Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-28T16:01:50.215615664Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-28T17:02:09.539525011Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-28T18:02:07.805423878Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-28T19:01:52.69470611Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.9",
-            "air": "19"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-28T20:01:49.355891917Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.9",
-            "air": "19"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-28T21:01:53.071922642Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.9",
-            "air": "19"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-28T22:01:48.363103117Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-28T23:01:40.340319899Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-29T00:06:12.490432168Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-29T01:27:55.327497925Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-29T02:14:20.609658927Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-29T03:01:47.39708663Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-29T04:02:05.01832423Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-29T05:03:07.917356527Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-29T06:02:36.485334635Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-29T07:02:14.40124802Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.1",
-            "air": "19"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-29T08:02:11.858778085Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17",
-            "air": "19"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-29T09:02:22.341376847Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17",
-            "air": "19"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-29T10:01:59.834748571Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17",
-            "air": "19"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-29T11:01:56.752644645Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-29T12:02:32.227540395Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-29T13:03:01.217213613Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-29T14:01:39.490739819Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-29T15:01:44.971664598Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-29T16:02:10.252269585Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-05-29T17:02:07.670399121Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-05-29T18:02:03.043697889Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-05-29T19:01:48.11225982Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-29T20:01:56.140661607Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-29T21:02:08.009831061Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-05-29T22:01:47.464943429Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.9",
-            "air": "19"
+            "water": "17.9"
         },
         {
             "timestamp": "2024-05-29T23:01:52.398878607Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-30T00:06:01.639063664Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-30T01:26:50.198845554Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-05-30T02:13:32.120727345Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-30T03:01:42.370138932Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-30T04:02:26.664598544Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-30T05:01:44.012033558Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-30T06:02:11.33444384Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.4",
-            "air": "19"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-30T07:01:56.922074229Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-30T08:02:20.227711586Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.1",
-            "air": "19"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-30T09:02:07.392948551Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.1",
-            "air": "19"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-30T10:02:00.414678619Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-30T11:01:51.527756412Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17",
-            "air": "19"
+            "water": "17"
         },
         {
             "timestamp": "2024-05-30T12:02:19.589303018Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-30T13:02:41.267328259Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.4",
-            "air": "19"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-30T14:02:49.495468627Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.4",
-            "air": "19"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-30T15:01:53.88375931Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.4",
-            "air": "19"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-30T16:02:15.885188859Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-30T17:01:42.905900972Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-30T18:02:22.457850439Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-30T19:01:44.093434262Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-30T20:02:18.710050778Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-30T21:01:43.214628592Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-05-30T22:01:44.988110856Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-30T23:01:38.493552837Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.4",
-            "air": "19"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-31T00:04:59.630897518Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.4",
-            "air": "19"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-05-31T01:27:14.897709906Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-31T02:13:30.387507653Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-31T03:02:05.682741007Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-31T04:02:18.036185713Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.3",
-            "air": "19"
+            "water": "17.3"
         },
         {
             "timestamp": "2024-05-31T05:01:55.309922168Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.1",
-            "air": "19"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-31T06:02:34.506818417Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.1",
-            "air": "19"
+            "water": "17.1"
         },
         {
             "timestamp": "2024-05-31T07:02:13.584106509Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "16.9",
-            "air": "19"
+            "water": "16.9"
         },
         {
             "timestamp": "2024-05-31T08:02:04.211946239Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "16.9",
-            "air": "19"
+            "water": "16.9"
         },
         {
             "timestamp": "2024-05-31T09:02:28.29002372Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "16.8",
-            "air": "19"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-31T10:01:47.041970001Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "16.8",
-            "air": "19"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-31T11:02:23.577570703Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "16.8",
-            "air": "19"
+            "water": "16.8"
         },
         {
             "timestamp": "2024-05-31T12:02:09.250879549Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-05-31T13:02:47.915925633Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-05-31T14:02:07.956041704Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-05-31T15:02:00.056389218Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-05-31T16:01:38.435564213Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-05-31T17:01:48.406233484Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-31T18:02:03.119966923Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-31T19:01:36.055248467Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-31T20:01:42.51803022Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-31T21:02:35.493037198Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-05-31T22:01:43.439971492Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-05-31T23:02:01.307224771Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-06-01T00:05:49.737880226Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-06-01T01:28:14.123162632Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-06-01T02:14:19.980021419Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.2",
-            "air": "19"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-06-01T03:02:29.610329125Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.2",
-            "air": "19"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-06-01T04:02:09.724046716Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-06-01T05:02:02.709422499Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-06-01T06:01:57.971321952Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-06-01T07:01:50.336779772Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.6",
-            "air": "19"
+            "water": "17.6"
         },
         {
             "timestamp": "2024-06-01T08:01:53.858371177Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.5",
-            "air": "19"
+            "water": "17.5"
         },
         {
             "timestamp": "2024-06-01T09:01:40.249956218Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.4",
-            "air": "19"
+            "water": "17.4"
         },
         {
             "timestamp": "2024-06-01T10:02:05.699033052Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.2",
-            "air": "19"
+            "water": "17.2"
         },
         {
             "timestamp": "2024-06-01T11:02:29.219785704Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.7",
-            "air": "19"
+            "water": "17.7"
         },
         {
             "timestamp": "2024-06-01T12:02:16.663572628Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.8",
-            "air": "19"
+            "water": "17.8"
         },
         {
             "timestamp": "2024-06-01T13:01:45.225285963Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-06-01T14:01:36.001074243Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.1",
-            "air": "19"
+            "water": "18.1"
         },
         {
             "timestamp": "2024-06-01T15:02:17.528563229Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-06-01T16:02:07.077194717Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-06-01T17:01:42.59007683Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-06-01T18:01:49.868450738Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-06-01T19:01:39.062118803Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.7",
-            "air": "19"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-06-01T20:01:37.431530358Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.7",
-            "air": "19"
+            "water": "18.7"
         },
         {
             "timestamp": "2024-06-01T21:02:13.85666166Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-06-01T22:02:12.482110063Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.6",
-            "air": "19"
+            "water": "18.6"
         },
         {
             "timestamp": "2024-06-01T23:02:02.271513595Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-06-02T00:06:12.299217876Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-06-02T01:28:01.215712971Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.5",
-            "air": "19"
+            "water": "18.5"
         },
         {
             "timestamp": "2024-06-02T02:14:55.362971709Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-06-02T03:02:13.15889854Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.4",
-            "air": "19"
+            "water": "18.4"
         },
         {
             "timestamp": "2024-06-02T04:02:29.927981751Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.3",
-            "air": "19"
+            "water": "18.3"
         },
         {
             "timestamp": "2024-06-02T05:01:50.964896841Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18.2",
-            "air": "19"
+            "water": "18.2"
         },
         {
             "timestamp": "2024-06-02T06:02:21.915219142Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "18",
-            "air": "19"
+            "water": "18"
         },
         {
             "timestamp": "2024-06-02T07:01:55.713540661Z",
-            "desc": "Broken Clouds \u0026",
-            "water": "17.9",
-            "air": "19"
+            "water": "17.9"
+        },
+        {
+            "timestamp": "2024-06-02T07:53:34.638649899Z",
+            "water": "17.6"
         }
     ]
 }

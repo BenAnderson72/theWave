@@ -19,9 +19,9 @@ type Root struct {
 }
 
 type Temp struct {
-	Timestamp   time.Time       `json:"timestamp"`
+	Timestamp time.Time `json:"timestamp"`
 	// Description string          `json:"desc"`
-	Water       decimal.Decimal `json:"water"`
+	Water decimal.Decimal `json:"water"`
 	// Air         decimal.Decimal `json:"air"`
 }
 
@@ -74,10 +74,10 @@ func scrapeTemperature(url string) Temp {
 
 	// out := "Nothing"
 
-	const (  // iota is reset to 0
-        desc = iota  // c0 == 0
-        air = iota  // c1 == 1
-        water = iota  // c2 == 2
+	const ( // iota is reset to 0
+		desc  = iota
+		air   = iota
+		water = iota
 	)
 
 	var out [3]string
@@ -140,15 +140,15 @@ func scrapeTemperature(url string) Temp {
 	c.Visit(url)
 
 	// fmt.Println(out)
-	tA, _ := decimal.NewFromString(out[air])
+	// tA, _ := decimal.NewFromString(out[air])
 	tW, _ := decimal.NewFromString(out[water])
 
 	// loc, _ := time.LoadLocation("Europe/London")
 	return Temp{
-		Timestamp:   time.Now(), //TODO: UK Time - BST
+		Timestamp: time.Now(), //TODO: UK Time - BST
 		// Description: out[desc],
 		// Air:         tA,
-		Water:       tW,
+		Water: tW,
 	}
 
 }

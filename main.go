@@ -20,9 +20,9 @@ type Root struct {
 
 type Temp struct {
 	Timestamp   time.Time       `json:"timestamp"`
-	Description string          `json:"desc"`
+	// Description string          `json:"desc"`
 	Water       decimal.Decimal `json:"water"`
-	Air         decimal.Decimal `json:"air"`
+	// Air         decimal.Decimal `json:"air"`
 }
 
 // The function PersistJSON encodes a given value as JSON and writes it to a file with the specified filename.
@@ -74,6 +74,12 @@ func scrapeTemperature(url string) Temp {
 
 	// out := "Nothing"
 
+	const (  // iota is reset to 0
+        desc = iota  // c0 == 0
+        air = iota  // c1 == 1
+        water = iota  // c2 == 2
+	)
+
 	var out [3]string
 
 	// c.OnRequest(func(r *colly.Request) {
@@ -92,35 +98,35 @@ func scrapeTemperature(url string) Temp {
 
 	c.OnHTML("div.flex", func(d *colly.HTMLElement) {
 
+		// i := 0
+
+		// if d.Attr("class") == "flex space-x-1 font-normal mb-2" {
+
+		// 	d.ForEach("p.text-sm", func(_ int, p *colly.HTMLElement) {
+
+		// 		switch i {
+		// 		case 0:
+		// 			out[desc] = strings.TrimSpace(p.Text)
+		// 		case 1:
+		// 			out[air] = strings.ReplaceAll(p.Text, "°C", "")
+		// 			out[air] = strings.TrimSpace(out[air])
+		// 		}
+
+		// 		i++
+
+		// 	})
+
+		// }
+
 		i := 0
-
-		if d.Attr("class") == "flex space-x-1 font-normal mb-2" {
-
-			d.ForEach("p.text-sm", func(_ int, p *colly.HTMLElement) {
-
-				switch i {
-				case 0:
-					out[0] = strings.TrimSpace(p.Text)
-				case 1:
-					out[1] = strings.ReplaceAll(p.Text, "°C", "")
-					out[1] = strings.TrimSpace(out[1])
-				}
-
-				i++
-
-			})
-
-		}
-
-		i = 0
 
 		if d.Attr("class") == "flex space-x-1 font-normal" {
 
 			d.ForEach("p.text-sm", func(_ int, p *colly.HTMLElement) {
 
 				if i == 1 {
-					out[2] = strings.ReplaceAll(p.Text, "°C", "")
-					out[2] = strings.TrimSpace(out[2])
+					out[water] = strings.ReplaceAll(p.Text, "°C", "")
+					out[water] = strings.TrimSpace(out[water])
 				}
 
 				i++
@@ -134,14 +140,14 @@ func scrapeTemperature(url string) Temp {
 	c.Visit(url)
 
 	// fmt.Println(out)
-	tA, _ := decimal.NewFromString(out[1])
-	tW, _ := decimal.NewFromString(out[2])
+	tA, _ := decimal.NewFromString(out[air])
+	tW, _ := decimal.NewFromString(out[water])
 
 	// loc, _ := time.LoadLocation("Europe/London")
 	return Temp{
 		Timestamp:   time.Now(), //TODO: UK Time - BST
-		Description: out[0],
-		Air:         tA,
+		// Description: out[desc],
+		// Air:         tA,
 		Water:       tW,
 	}
 

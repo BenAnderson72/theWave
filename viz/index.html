@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <html>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<body>
-  <div id="tempChart" style="width:100%; max-width:600px; height:500px;"></div>
+<head>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 
   <script type="text/javascript">
 
-    // Load the Visualization API and the piechart package.
-    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Load the Visualization API and the controls package.
+    google.charts.load('current', { 'packages': ['corechart', 'controls'] });
 
     // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawDashboard);
 
-    function drawChart() {
+    function drawDashboard() {
 
+      // Create a dashboard.
+      var dashboard = new google.visualization.Dashboard(
+        document.getElementById('dashboard_div'));
+
+      // Create a range slider, passing some options
+      var dateRangeSlider = new google.visualization.ControlWrapper({
+        'controlType': 'DateRangeFilter',
+        'containerId': 'filter_div',
+        'options': {
+          'filterColumnLabel': 'timestamp'
+        }
+      });
+
+
+
+
+      // Create a pie chart, passing some options
+      var chart = new google.visualization.ChartWrapper({
+        'chartType': 'LineChart',
+        'containerId': 'chart_div',
+        'options': {
+          'title': 'Water Temperature [°C] at The Wave',
+          'width': 2000,
+          'height': 800,
+          'legend': 'none'
+        }
+      });
+
+
+      dashboard.bind(dateRangeSlider, chart);
+
+      dashboard.draw(getData());
+
+    }
+
+    function getData() {
       var jsonData = $.ajax({
         url: "../temperature.json",
         dataType: "json",
@@ -59,47 +97,26 @@
         }
       });
 
-      var options = {
-          title: 'Water Temperature [°C] at The Wave',
-          width: 2000,
-          height: 800,
-          hAxis: {
-          // viewWindow: {
-          //   min: new Date(2024, 4, 31, 18),
-          //   max: new Date(2025, 0, 3, 1)
-          // },
-          // gridlines: {
-          //   count: -1,
-          //   units: {
-          //     days: {format: ['MMM dd']},
-          //     hours: {format: ['HH:mm', 'ha']},
-          //   }
-          // },
-          // minorGridlines: {
-          //   units: {
-          //     hours: {format: ['hh:mm:ss a', 'ha']},
-          //     minutes: {format: ['HH:mm a Z', ':mm']}
-          //   }
-          // }
-        }
-          // hAxis: {
-          //   format: 'M/d/yy',
-          //   gridlines: {count: 15}
-          // }
-          // ,
-          // vAxis: {
-          //   gridlines: {color: 'none'},
-          //   minValue: 0
-          // }
-        };
+      return data;
 
-      var chart = new google.visualization.LineChart(document.getElementById('tempChart'));
-      chart.draw(data, options);
     }
 
 
   </script>
 
+
+</head>
+
+<body>
+  <div id="dashboard_div">
+    <div id="chart_div"></div>
+    <div id="filter_div" align="center"></div>
+
+  </div>
+
+  <!-- <div id="tempChart" style="width:100%; max-width:600px; height:500px;"></div> -->
+
 </body>
+
 
 </html>

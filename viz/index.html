@@ -74,8 +74,8 @@
           for (var column in jsonRow)
             switch (column) {
               case 'timestamp': data.addColumn('date', column); break;
-              case 'air':
               case 'desc': break; //ignore
+              case 'air': 
               case 'water': data.addColumn('number', column); break;
             }
         }
@@ -86,8 +86,8 @@
         for (var column in jsonRow) {
           switch (column) {
             case 'timestamp': dataRow.push(new Date(jsonRow[column])); break;
-            case 'air':
             case 'desc': break; //ignore
+            case 'air':
             case 'water': dataRow.push(parseFloat(jsonRow[column])); break;
           }
         }

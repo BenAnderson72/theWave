@@ -3,6 +3,7 @@ package main
 import (
 	"regexp"
 	"testing"
+	"time"
 
 	"github.com/shopspring/decimal"
 )
@@ -123,4 +124,94 @@ func Test_scrape(t *testing.T) {
 		t.Errorf("expected decimal Water temp, got |%s|", act.Air)
 	}
 
+}
+
+func Test_getAirTempHistoricIdMay(t *testing.T) {
+
+	format := "2006-01-02 15:04:05"
+	tm, _ := time.Parse(format, "2024-05-23 00:05:19")
+
+	exp := "#ws_88"
+	act := getAirTempHistoricId(tm)
+
+	if act != exp {
+		t.Errorf("expected %s, got %s", exp, act)
+	}
+
+	// ####
+
+	tm, _ = time.Parse(format, "2024-05-22 21:56:04")
+
+	exp = "#ws_87"
+	act = getAirTempHistoricId(tm)
+
+	if act != exp {
+		t.Errorf("expected %s, got %s", exp, act)
+	}
+
+	// ####
+
+	tm, _ = time.Parse(format, "2024-05-25 18:01:38")
+
+	exp = "#ws_99"
+	act = getAirTempHistoricId(tm)
+
+	if act != exp {
+		t.Errorf("expected %s, got %s", exp, act)
+	}
+
+}
+
+func Test_getAirTempHistoricIdJune(t *testing.T) {
+
+	format := "2006-01-02 15:04:05"
+	tm, _ := time.Parse(format, "2024-06-23 00:05:19")
+
+	exp := "#ws_88"
+	act := getAirTempHistoricId(tm)
+
+	if act != exp {
+		t.Errorf("expected %s, got %s", exp, act)
+	}
+
+	// ####
+
+	tm, _ = time.Parse(format, "2024-06-22 21:56:04")
+
+	exp = "#ws_87"
+	act = getAirTempHistoricId(tm)
+
+	if act != exp {
+		t.Errorf("expected %s, got %s", exp, act)
+	}
+
+	// ####
+
+	tm, _ = time.Parse(format, "2024-06-25 18:01:38")
+
+	exp = "#ws_99"
+	act = getAirTempHistoricId(tm)
+
+	if act != exp {
+		t.Errorf("expected %s, got %s", exp, act)
+	}
+
+}
+
+func Test_scrapeAirTempHistoric(t *testing.T) {
+
+	format := "2006-01-02 15:04:05"
+	tm, _ := time.Parse(format, "2024-05-23 00:05:19")
+
+	exp := decimal.NewFromFloat(11.5)
+	act := scrapeAirTempHistoric(tm)
+
+	if !decimal.Decimal.Equal(act, exp) {
+		t.Errorf("expected |%s|, got |%s|", exp, act)
+	}
+}
+
+func Test_addAirTempHistoric(t *testing.T) {
+
+	addAirTempHistoric()
 }

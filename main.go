@@ -3,7 +3,9 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"os"
 	"strings"
@@ -171,5 +173,114 @@ func scrapeAirTemp(url string) decimal.Decimal {
 	tA, _ := decimal.NewFromString(strTemp)
 
 	return tA
+
+}
+
+func addAirTempHistoric() {
+
+	var dx Root
+	fn := "./temperature.json"
+	unmarshalJSON(fn, &dx)
+
+	for i, _ := range dx.Temps {
+
+		t := &dx.Temps[i]
+		if t.Air.Equal(decimal.Zero) {
+			if t.Timestamp.Month() == time.May {
+
+				t.Air = scrapeAirTempHistoric(t.Timestamp)
+
+			}
+		}
+	}
+
+	persistJSON(fn, dx)
+
+}
+
+func getAirTempHistoricId(t time.Time) string {
+	format := "2006-01-02 15:04:05"
+	startDt, _ := time.Parse(format, "2024-05-01 00:00:00")
+
+	if t.Month() == time.June {
+		startDt, _ = time.Parse(format, "2024-06-01 00:00:00")
+	}
+
+	diff := t.Sub(startDt).Hours()
+
+	id := int(math.Floor(diff / 6))
+
+	return fmt.Sprintf("#ws_%d", id)
+
+}
+
+func scrapeAirTempHistoric(t time.Time) decimal.Decimal {
+
+	// work out the #id
+	id := getAirTempHistoricId(t)
+
+	url := "file://./historicTempsMay.html"
+
+	if t.Month() == time.June {
+		url = "file://./historicTempsJune.html"
+	}
+
+	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
+
+	// do different stuff if reading local file
+	if strings.HasPrefix(url, "file") {
+		t := &http.Transport{}
+		t.RegisterProtocol("file", http.NewFileTransport(http.Dir(".")))
+		c.WithTransport(t)
+	}
+
+	// c.OnRequest(func(r *colly.Request) {
+	// 	fmt.Println("Visiting: ", r.URL)
+	// })
+
+	// c.OnResponse(func(r *colly.Response) { //get body
+	// 	fmt.Println("Responding: ", string(r.Body))
+	// })
+
+	// c.OnError(func(r *colly.Response, err error) {
+	// 	fmt.Println("Request URL: ", r.Request.URL, " failed with response: ", r, "\nError: ", err)
+	// })
+
+	strTempLo := "0"
+	strTempHi := "0"
+
+	c.OnHTML(id, func(d *colly.HTMLElement) {
+
+		fmt.Println(d.DOM.Children().Find(".tempLow").Text())
+
+		// fmt.Println(qoquerySelection.Find(" span").Children().Text())
+
+		d.ForEach("div", func(_ int, p *colly.HTMLElement) {
+
+			// "tempLow low"
+			// "temp low"
+			if p.Attr("class") == "tempLow low" {
+				strTempLo = strings.ReplaceAll(p.Text, "Lo:", "")
+				strTempLo = strings.TrimSpace(strTempLo)
+			}
+
+			if p.Attr("class") == "temp low" {
+				strTempHi = strings.ReplaceAll(p.Text, "Hi:", "")
+				strTempHi = strings.TrimSpace(strTempHi)
+			}
+
+		})
+
+	})
+
+	c.Visit(url)
+
+	tL, _ := decimal.NewFromString(strTempLo)
+	tH, _ := decimal.NewFromString(strTempHi)
+
+	// tS := decimal.Sum(tL, tH)
+	// return tS.Div(decimal.NewFromInt(2))
+
+	return decimal.Avg(tL, tH)
 
 }

@@ -8,3 +8,5 @@ http://www.jayperetz.com/projects/ajax-json/index.html#:~:text=First%20you%20nee
 
 
 https://developers.google.com/chart/interactive/docs/datesandtimes
+
+https://www.timeanddate.com/weather/uk/bristol/historic?month=5&year=2024

@@ -198,10 +198,25 @@ func Test_getAirTempHistoricIdJune(t *testing.T) {
 
 }
 
-func Test_scrapeAirTempHistoric(t *testing.T) {
+func Test_scrapeAirTempHistoric1(t *testing.T) {
 
 	format := "2006-01-02 15:04:05"
 	tm, _ := time.Parse(format, "2024-05-23 00:05:19")
+
+	exp := decimal.NewFromFloat(11.5)
+	act := scrapeAirTempHistoric(tm)
+
+	if !decimal.Decimal.Equal(act, exp) {
+		t.Errorf("expected |%s|, got |%s|", exp, act)
+	}
+}
+
+func Test_scrapeAirTempHistoric2(t *testing.T) {
+
+	// "2024-06-14T15:02:32.469839948Z"
+
+	format := "2006-01-02 15:04:05"
+	tm, _ := time.Parse(format, "2024-06-15 15:02:32")
 
 	exp := decimal.NewFromFloat(11.5)
 	act := scrapeAirTempHistoric(tm)

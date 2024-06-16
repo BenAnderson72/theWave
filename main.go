@@ -186,11 +186,7 @@ func addAirTempHistoric() {
 
 		t := &dx.Temps[i]
 		if t.Air.Equal(decimal.Zero) {
-			if t.Timestamp.Month() == time.May {
-
-				t.Air = scrapeAirTempHistoric(t.Timestamp)
-
-			}
+			t.Air = scrapeAirTempHistoric(t.Timestamp)
 		}
 	}
 

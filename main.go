@@ -73,7 +73,7 @@ func scrape(waterUrl string, airUrl string) Temp {
 		Timestamp: time.Now(), //TODO: UK Time - BST
 		// Description: out[desc],
 		Air:   scrapeAirTemp(airUrl),
-		Water: scrapeWaterTemp(waterUrl),
+		Water: scrapeWaterTemp2(waterUrl),
 	}
 }
 
@@ -118,6 +118,54 @@ func scrapeWaterTemp(waterUrl string) decimal.Decimal {
 				}
 
 				i++
+				// return (i > 1)
+
+			})
+
+		}
+	})
+
+	c.Visit(waterUrl)
+
+	tW, _ := decimal.NewFromString(strTemp)
+
+	return tW
+}
+
+// The Wave messed around with where the water temp was published
+func scrapeWaterTemp2(waterUrl string) decimal.Decimal {
+
+	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
+
+	// do different stuff if reading local file
+	if strings.HasPrefix(waterUrl, "file") {
+		t := &http.Transport{}
+		t.RegisterProtocol("file", http.NewFileTransport(http.Dir(".")))
+		c.WithTransport(t)
+	}
+
+	strTemp := "0"
+
+	// bg-robins-egg-500 text-bluewood rounded-3xl flex items-center justify-between gap-4 py-2 px-4 max-w-96
+
+	c.OnHTML("div.bg-robins-egg-500", func(d *colly.HTMLElement) {
+
+		i := 0
+
+		if d.Attr("class") == "bg-robins-egg-500 text-bluewood rounded-3xl flex items-center justify-between gap-4 py-2 px-4 max-w-96" {
+
+			d.ForEachWithBreak("p.text-sm", func(_ int, p *colly.HTMLElement) bool {
+
+				if i == 2 {
+					strTemp = strings.ReplaceAll(p.Text, "°C", "")
+					strTemp = strings.ReplaceAll(strTemp, "Water:", "")
+					strTemp = strings.TrimSpace(strTemp)
+					return false
+				}
+
+				i++
+				return true
+
 				// return (i > 1)
 
 			})

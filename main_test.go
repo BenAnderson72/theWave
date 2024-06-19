@@ -18,11 +18,17 @@ func Test_scrapeWater(t *testing.T) {
 		t.Errorf("expected decimal Water temp, got |%s|", act)
 	}
 
-	// matched, _ = regexp.MatchString(`^.\d{1,2}(\.\d)*$`, act.Air.String())
+}
 
-	// if !matched {
-	// 	t.Errorf("expected decimal Air temp, got |%s|", act.Air)
-	// }
+func Test_scrapeWater2(t *testing.T) {
+
+	act := scrapeWaterTemp2("https://www.thewave.com")
+
+	matched, _ := regexp.MatchString(`^.\d{1,2}(\.\d)*$`, act.String())
+
+	if !matched {
+		t.Errorf("expected decimal Water temp, got |%s|", act)
+	}
 
 }
 
@@ -48,6 +54,18 @@ func Test_scrapeWaterStatic(t *testing.T) {
 
 }
 
+func Test_scrapeWater2Static(t *testing.T) {
+
+	act := scrapeWaterTemp2("file://./staticWater2.html")
+
+	exp := decimal.NewFromInt(20)
+
+	if !decimal.Decimal.Equal(act, exp) {
+		t.Errorf("expected %s, got %s", exp, act)
+	}
+
+}
+
 func Test_scrapeStatic(t *testing.T) {
 
 	act := scrape("file://./staticWater.html", "file://./staticAir.html")
@@ -63,10 +81,6 @@ func Test_scrapeStatic(t *testing.T) {
 	if !decimal.Decimal.Equal(act.Air, tA) {
 		t.Errorf("expected %s, got %s", tA, act.Air)
 	}
-
-	// if act.Description != desc {
-	// 	t.Errorf("expected %s, got %s", desc, act)
-	// }
 
 }
 
@@ -111,6 +125,24 @@ func Test_scrapeTemperatureAndPersist(t *testing.T) {
 func Test_scrape(t *testing.T) {
 
 	act := scrape("https://www.thewave.com/live-updates/", "https://weather.com/en-GB/weather/today/l/51.54,-2.62")
+
+	matched, _ := regexp.MatchString(`^.\d{1,2}(\.\d)*$`, act.Water.String())
+
+	if !matched {
+		t.Errorf("expected decimal Water temp, got |%s|", act.Water)
+	}
+
+	matched, _ = regexp.MatchString(`^.\d{1,2}(\.\d)*$`, act.Air.String())
+
+	if !matched {
+		t.Errorf("expected decimal Water temp, got |%s|", act.Air)
+	}
+
+}
+
+func Test_scrape2(t *testing.T) {
+
+	act := scrape("https://www.thewave.com", "https://weather.com/en-GB/weather/today/l/51.54,-2.62")
 
 	matched, _ := regexp.MatchString(`^.\d{1,2}(\.\d)*$`, act.Water.String())
 

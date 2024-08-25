@@ -30,29 +30,38 @@
 
       // Create a range slider, passing some options
       var dateRangeSlider = new google.visualization.ControlWrapper({
-        'controlType': 'DateRangeFilter',
-        'containerId': 'filter_div',
-        'options': {
-          'filterColumnLabel': 'timestamp'
+        controlType: 'DateRangeFilter',
+        containerId: 'filter_div',
+        options: {
+          filterColumnLabel: 'timestamp'
         }
-        , 'state': { 'lowValue': lDate, 'highValue': hDate }
+        , state: { 'lowValue': lDate, 'highValue': hDate }
       });
       
+      // https://stackoverflow.com/questions/8808100/google-chart-background-color
 
       // Create a pie chart, passing some options
       var chart = new google.visualization.ChartWrapper({
-        'chartType': 'LineChart',
-        'containerId': 'chart_div',
-        'options': {
-          'title': 'Water Temperature [°C] at The Wave',
-          'width': 2000,
-          'height': 800,
-          'legend': 'right'
+        chartType: 'ComboChart',
+        containerId: 'chart_div',
+        options: {
+          title: 'Water Temperature [°C] at The Wave',
+          isStacked: true,
+          seriesType: 'steppedArea',
+          series: {
+            0:  {type:'line', visibleInLegend: true},
+            1:  {type:'line', visibleInLegend: true},
+            },
+          width: 2000,
+          height: 800,
+          legend: 'right'
         }
       });
 
 
       dashboard.bind(dateRangeSlider, chart);
+
+      // console.log(getData())
 
       dashboard.draw(getData());
 
@@ -67,6 +76,8 @@
         //console.log(data);
         //}
       }).responseJSON;
+
+      // var d = google.visualization.arrayToDataTable(
 
       var data = new google.visualization.DataTable();
 
@@ -83,6 +94,10 @@
               case 'air':
               case 'water': data.addColumn('number', column); break;
             }
+            data.addColumn('number', 'cold')
+            data.addColumn('number', 'tepid')
+            data.addColumn('number', 'warm')
+            data.addColumn('number', 'hot')
         }
 
 
@@ -96,6 +111,11 @@
             case 'water': dataRow.push(parseFloat(jsonRow[column])); break;
           }
         }
+
+        dataRow.push(10)
+        dataRow.push(5)
+        dataRow.push(5)
+        dataRow.push(10)
 
         if (dataRow.length > 0) {
           data.addRow(dataRow);

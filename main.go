@@ -68,72 +68,85 @@ func scrapeTemperatureAndPersist(waterUrl string, airUrl string) {
 
 func scrape(waterUrl string, airUrl string) Temp {
 
+	air, err := scrapeAirTemp(airUrl)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var water decimal.Decimal
+
+	water, err = scrapeWaterTemp2(waterUrl)
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	// loc, _ := time.LoadLocation("Europe/London")
 	return Temp{
 		Timestamp: time.Now(), //TODO: UK Time - BST
 		// Description: out[desc],
-		Air:   scrapeAirTemp(airUrl),
-		Water: scrapeWaterTemp2(waterUrl),
+		Air:   air,
+		Water: water,
 	}
 }
 
-func scrapeWaterTemp(waterUrl string) decimal.Decimal {
+// func scrapeWaterTemp(waterUrl string) decimal.Decimal {
 
-	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
+// 	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
 
-	// do different stuff if reading local file
-	if strings.HasPrefix(waterUrl, "file") {
-		t := &http.Transport{}
-		t.RegisterProtocol("file", http.NewFileTransport(http.Dir(".")))
-		c.WithTransport(t)
-	}
+// 	// do different stuff if reading local file
+// 	if strings.HasPrefix(waterUrl, "file") {
+// 		t := &http.Transport{}
+// 		t.RegisterProtocol("file", http.NewFileTransport(http.Dir(".")))
+// 		c.WithTransport(t)
+// 	}
 
-	strTemp := "0"
+// 	strTemp := "0"
 
-	// c.OnRequest(func(r *colly.Request) {
-	// 	fmt.Println("Visiting: ", r.URL)
-	// })
+// 	// c.OnRequest(func(r *colly.Request) {
+// 	// 	fmt.Println("Visiting: ", r.URL)
+// 	// })
 
-	// c.OnResponse(func(r *colly.Response) { //get body
-	// 	fmt.Println("Responding: ", string(r.Body))
-	// })
+// 	// c.OnResponse(func(r *colly.Response) { //get body
+// 	// 	fmt.Println("Responding: ", string(r.Body))
+// 	// })
 
-	// c.OnError(func(r *colly.Response, err error) {
-	// 	fmt.Println("Request URL: ", r.Request.URL, " failed with response: ", r, "\nError: ", err)
-	// })
+// 	// c.OnError(func(r *colly.Response, err error) {
+// 	// 	fmt.Println("Request URL: ", r.Request.URL, " failed with response: ", r, "\nError: ", err)
+// 	// })
 
-	// https://benjamincongdon.me/blog/2018/03/01/Scraping-the-Web-in-Golang-with-Colly-and-Goquery/
+// 	// https://benjamincongdon.me/blog/2018/03/01/Scraping-the-Web-in-Golang-with-Colly-and-Goquery/
 
-	c.OnHTML("div.flex", func(d *colly.HTMLElement) {
+// 	c.OnHTML("div.flex", func(d *colly.HTMLElement) {
 
-		i := 0
+// 		i := 0
 
-		if d.Attr("class") == "flex space-x-1 font-normal" {
+// 		if d.Attr("class") == "flex space-x-1 font-normal" {
 
-			d.ForEach("p.text-sm", func(_ int, p *colly.HTMLElement) {
+// 			d.ForEach("p.text-sm", func(_ int, p *colly.HTMLElement) {
 
-				if i == 1 {
-					strTemp = strings.ReplaceAll(p.Text, "°C", "")
-					strTemp = strings.TrimSpace(strTemp)
-				}
+// 				if i == 1 {
+// 					strTemp = strings.ReplaceAll(p.Text, "°C", "")
+// 					strTemp = strings.TrimSpace(strTemp)
+// 				}
 
-				i++
-				// return (i > 1)
+// 				i++
+// 				// return (i > 1)
 
-			})
+// 			})
 
-		}
-	})
+// 		}
+// 	})
 
-	c.Visit(waterUrl)
+// 	c.Visit(waterUrl)
 
-	tW, _ := decimal.NewFromString(strTemp)
+// 	tW, _ := decimal.NewFromString(strTemp)
 
-	return tW
-}
+// 	return tW
+// }
 
 // The Wave messed around with where the water temp was published
-func scrapeWaterTemp2(waterUrl string) decimal.Decimal {
+func scrapeWaterTemp2(waterUrl string) (decimal.Decimal, error) {
 
 	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
 
@@ -175,12 +188,12 @@ func scrapeWaterTemp2(waterUrl string) decimal.Decimal {
 
 	c.Visit(waterUrl)
 
-	tW, _ := decimal.NewFromString(strTemp)
+	// tW, _ := decimal.NewFromString(strTemp)
 
-	return tW
+	return decimal.NewFromString(strTemp)
 }
 
-func scrapeAirTemp(url string) decimal.Decimal {
+func scrapeAirTemp(url string) (decimal.Decimal, error) {
 
 	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
 
@@ -205,22 +218,35 @@ func scrapeAirTemp(url string) decimal.Decimal {
 
 	strTemp := "0"
 
-	c.OnHTML(".HourlyWeatherCard--TableWrapper--1OobO", func(d *colly.HTMLElement) {
+	// "div.HourlyWeatherCard--TableWrapper--1OobO"
 
-		d.ForEachWithBreak("div", func(_ int, p *colly.HTMLElement) bool {
-			// we only wnat the 0th item
-			strTemp = strings.ReplaceAll(p.Text, "°", "")
-			strTemp = strings.TrimSpace(strTemp)
-			return false
-		})
+	c.OnHTML("div", func(d *colly.HTMLElement) {
+
+		if strings.HasPrefix(d.Attr("class"), "HourlyWeatherCard--TableWrapper") {
+
+			d.ForEachWithBreak("div", func(_ int, p *colly.HTMLElement) bool {
+				// we only wnat the 0th item
+				strTemp = strings.ReplaceAll(p.Text, "°", "")
+				strTemp = strings.TrimSpace(strTemp)
+				return false
+			})
+		}
 
 	})
 
+	// doc, _ := goquery.NewDocumentFromReader(resp.Body)
+
+	// // Find the element containing the product list
+	// selector := doc.Find("div.products > div")
+
+	// #WxuCurrentConditions-main-b3094163-ef75-4558-8d9a-e35e6b9b1034 > div > section > div > div > div.CurrentConditions--body--r20G9 > div.CurrentConditions--columns--Bt5V8 > div.CurrentConditions--primary--A\+Brf > span
+	// /html/body/div[1]/main/div[2]/main/div[1]/div/section/div/div/div[2]/div[1]/div[1]/span
+
 	c.Visit(url)
 
-	tA, _ := decimal.NewFromString(strTemp)
+	// tA, e := decimal.NewFromString(strTemp)
 
-	return tA
+	return decimal.NewFromString(strTemp)
 
 }
 
@@ -230,7 +256,7 @@ func addAirTempHistoric() {
 	fn := "./temperature.json"
 	unmarshalJSON(fn, &dx)
 
-	for i, _ := range dx.Temps {
+	for i := range dx.Temps {
 
 		t := &dx.Temps[i]
 		if t.Air.Equal(decimal.Zero) {

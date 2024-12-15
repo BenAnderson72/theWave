@@ -69,7 +69,7 @@
 
       var data = getData()
 
-      var formatter = new google.visualization.DateFormat({pattern: 'MMM'});
+      var formatter = new google.visualization.DateFormat({pattern: 'd MMM HH:MM:SS'});
       formatter.format(data, 0);
 
       dashboard.draw(data);

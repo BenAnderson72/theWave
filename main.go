@@ -208,9 +208,12 @@ func scrapeAirTemp(url string) (decimal.Decimal, error) {
 	// 	fmt.Println("Visiting: ", r.URL)
 	// })
 
-	// c.OnResponse(func(r *colly.Response) { //get body
-	// 	fmt.Println("Responding: ", string(r.Body))
-	// })
+	body := ""
+
+	c.OnResponse(func(r *colly.Response) { //get body
+		// fmt.Println("Responding: ", string(r.Body))
+		body = string(r.Body)
+	})
 
 	// c.OnError(func(r *colly.Response, err error) {
 	// 	fmt.Println("Request URL: ", r.Request.URL, " failed with response: ", r, "\nError: ", err)
@@ -220,7 +223,11 @@ func scrapeAirTemp(url string) (decimal.Decimal, error) {
 
 	// "div.HourlyWeatherCard--TableWrapper--1OobO"
 
+	bFoundIt := false
+
 	c.OnHTML("div", func(d *colly.HTMLElement) {
+
+		bFoundIt = true
 
 		if strings.HasPrefix(d.Attr("class"), "HourlyWeatherCard--TableWrapper") {
 
@@ -245,6 +252,22 @@ func scrapeAirTemp(url string) (decimal.Decimal, error) {
 	c.Visit(url)
 
 	// tA, e := decimal.NewFromString(strTemp)
+
+	// bFoundIt = false
+
+	if bFoundIt == false {
+
+		// fmt.Sprintf("%s","")
+
+		// filename := fmt.Sprintf("./htmlDmp/airTemp-%v.html", time.Now().Format(time.RFC822))
+
+		// fo, _ := os.Create(filename)
+
+		// fo.Write([]byte(body))
+
+		fmt.Print(body)
+
+	}
 
 	return decimal.NewFromString(strTemp)
 

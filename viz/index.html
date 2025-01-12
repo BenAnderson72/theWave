@@ -41,7 +41,7 @@
       // https://stackoverflow.com/questions/8808100/google-chart-background-color
 
       // Create a pie chart, passing some options
-      var chart = new google.visualization.ChartWrapper({
+      var chartWrap = new google.visualization.ChartWrapper({
         chartType: 'ComboChart',
         containerId: 'chart_div',
         options: {
@@ -62,8 +62,10 @@
         }
       });
 
+      // console.log("here ",chartWrap.columns.length)
 
-      dashboard.bind(dateRangeSlider, chart);
+      // chartWrap.setView({'columns': [0,1,2,3,4,5]});    
+      dashboard.bind(dateRangeSlider, chartWrap);
 
       // console.log(getData())
 
@@ -96,7 +98,9 @@
 
         // add columns
         if (indexRow === 0) {
+          console.log(jsonRow)
           for (var column in jsonRow)
+            // console.log(column)
             switch (column) {
               case 'timestamp': data.addColumn('date', column); break;
               case 'desc': break; //ignore

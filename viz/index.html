@@ -49,12 +49,11 @@
           isStacked: true,
           seriesType: 'steppedArea',
           series: {
-            0:  {type:'line', visibleInLegend: true},
-            1:  {type:'line', visibleInLegend: true},
-            2: { color: '#0cf' },
-            3: { color: '#39c' },
-            4: { color: '#fc6' },
-            5: { color: '#f63' },
+            0: { type: 'line', visibleInLegend: true },
+            1: { color: '#0cf' },
+            2: { color: '#39c' },
+            3: { color: '#fc6' },
+            4: { color: '#f63' },
             },
           width: 2000,
           height: 800,
@@ -104,13 +103,13 @@
             switch (column) {
               case 'timestamp': data.addColumn('date', column); break;
               case 'desc': break; //ignore
-              case 'air':
+              case 'air': break;
               case 'water': data.addColumn('number', column); break;
             }
-            data.addColumn('number', 'cold')
-            data.addColumn('number', 'tepid')
-            data.addColumn('number', 'warm')
-            data.addColumn('number', 'hot')
+            data.addColumn('number', 'cold (0-10)')
+            data.addColumn('number', 'tepid (10-15)')
+            data.addColumn('number', 'warm (15-20)')
+            data.addColumn('number', 'hot (20-30)')
         }
 
 
@@ -120,7 +119,7 @@
           switch (column) {
             case 'timestamp': dataRow.push(new Date(jsonRow[column])); break;
             case 'desc': break; //ignore
-            case 'air':
+            case 'air': break;
             case 'water': dataRow.push(parseFloat(jsonRow[column])); break;
           }
         }

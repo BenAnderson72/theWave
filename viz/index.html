@@ -1,46 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 
 <head>
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+  <style>
+    #date_filter {
+      width: 2000px;
+      text-align: right;
+    }
+    #date_filter input {
+      width: 90px;
+    }
+    #range_error {
+      display: block;
+    }
+  </style>
 
 
   <script type="text/javascript">
 
 
-    // Load the Visualization API and the controls package.
-    google.charts.load('current', { 'packages': ['corechart', 'controls'] });
+    // Load the Visualization API.
+    google.charts.load('current', { 'packages': ['corechart'] });
 
     // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawDashboard);
+    google.charts.setOnLoadCallback(drawChart);
 
-    function drawDashboard() {
-
-      // Create a dashboard.
-      var dashboard = new google.visualization.Dashboard(
-        document.getElementById('dashboard_div'));
-
-      var hDate = new Date();
-      var lDate = new Date((new Date()).setDate((new Date()).getDate() - 14));
-      // var lDate = new Date(2024, 6, 14)
-
-      // console.log(lDate, hDate);
-
-      // Create a range slider, passing some options
-      var dateRangeSlider = new google.visualization.ControlWrapper({
-        controlType: 'DateRangeFilter',
-        containerId: 'filter_div',
-        options: {
-          filterColumnLabel: 'timestamp'
-        }
-        , state: { 'lowValue': lDate, 'highValue': hDate }
-      });
-      
+    function drawChart() {
       // https://stackoverflow.com/questions/8808100/google-chart-background-color
 
-      // Create a pie chart, passing some options
       var chartWrap = new google.visualization.ChartWrapper({
         chartType: 'ComboChart',
         containerId: 'chart_div',
@@ -61,20 +53,108 @@
         }
       });
 
-      // console.log("here ",chartWrap.columns.length)
-
-      // chartWrap.setView({'columns': [0,1,2,3,4,5]});    
-      dashboard.bind(dateRangeSlider, chartWrap);
-
-      // console.log(getData())
-
       var data = getData()
 
       var formatter = new google.visualization.DateFormat({pattern: 'd MMM HH:mm:ss'});
       formatter.format(data, 0);
 
-      dashboard.draw(data);
+      var fromInput = document.getElementById('from_date');
+      var toInput = document.getElementById('to_date');
+      var rangeError = document.getElementById('range_error');
+      var rowCount = data.getNumberOfRows();
 
+      if (rowCount === 0) {
+        rangeError.textContent = 'No temperature data is available.';
+        fromInput.disabled = true;
+        toInput.disabled = true;
+        chartWrap.setDataTable(data);
+        chartWrap.draw();
+        return;
+      }
+
+      var firstDate = data.getValue(0, 0);
+      var lastDate = firstDate;
+      for (var row = 1; row < rowCount; row++) {
+        var timestamp = data.getValue(row, 0);
+        if (timestamp < firstDate) {
+          firstDate = timestamp;
+        }
+        if (timestamp > lastDate) {
+          lastDate = timestamp;
+        }
+      }
+
+      var earliestDate = new Date(firstDate);
+      var latestDate = new Date(lastDate);
+      var initialFromDate = new Date(lastDate);
+      initialFromDate.setDate(initialFromDate.getDate() - 14);
+
+      $(fromInput).datepicker({
+        dateFormat: 'dd/mm/yy',
+        minDate: earliestDate,
+        maxDate: latestDate,
+        onSelect: updateChart
+      });
+      $(toInput).datepicker({
+        dateFormat: 'dd/mm/yy',
+        minDate: earliestDate,
+        maxDate: latestDate,
+        onSelect: updateChart
+      });
+      fromInput.value = dateInputValue(initialFromDate < earliestDate ? earliestDate : initialFromDate);
+      toInput.value = dateInputValue(latestDate);
+
+      function updateChart() {
+        var startDate = parseInputDate(fromInput.value);
+        var endDate = parseInputDate(toInput.value);
+
+        if (!startDate || !endDate || startDate > endDate) {
+          rangeError.textContent = 'Choose a start date on or before the end date.';
+          return;
+        }
+
+        rangeError.textContent = '';
+        var endExclusive = new Date(endDate);
+        endExclusive.setDate(endExclusive.getDate() + 1);
+        var rows = [];
+
+        for (var row = 0; row < data.getNumberOfRows(); row++) {
+          var timestamp = data.getValue(row, 0);
+          if (timestamp >= startDate && timestamp < endExclusive) {
+            rows.push(row);
+          }
+        }
+
+        var view = new google.visualization.DataView(data);
+        view.setRows(rows);
+        chartWrap.setDataTable(view);
+        chartWrap.draw();
+      }
+
+      fromInput.addEventListener('change', updateChart);
+      toInput.addEventListener('change', updateChart);
+      updateChart();
+    }
+
+    function dateInputValue(date) {
+      return String(date.getDate()).padStart(2, '0') + '/' +
+        String(date.getMonth() + 1).padStart(2, '0') + '/' +
+        date.getFullYear();
+    }
+
+    function parseInputDate(value) {
+      var match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value);
+      if (!match) {
+        return null;
+      }
+      var day = Number(match[1]);
+      var month = Number(match[2]) - 1;
+      var year = Number(match[3]);
+      var date = new Date(year, month, day);
+      if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) {
+        return null;
+      }
+      return date;
     }
 
     function getData() {
@@ -145,10 +225,13 @@
 </head>
 
 <body>
-  <div id="dashboard_div">
-    <div id="chart_div"></div>
-    <div id="filter_div" align="center"></div>
-
+  <div id="chart_div"></div>
+  <div id="date_filter">
+    <label for="from_date">From</label>
+    <input id="from_date" type="text" inputmode="numeric" placeholder="dd/mm/yyyy" autocomplete="off">
+    <label for="to_date">To</label>
+    <input id="to_date" type="text" inputmode="numeric" placeholder="dd/mm/yyyy" autocomplete="off">
+    <span id="range_error" role="status" aria-live="polite"></span>
   </div>
 
   <!-- <div id="tempChart" style="width:100%; max-width:600px; height:500px;"></div> -->

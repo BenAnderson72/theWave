@@ -16,8 +16,7 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-// const cWaterUrl string = "https://www.thewave.com/live-updates/"
-// const cAirUrl string = "https://weather.com/en-GB/weather/today/l/51.54,-2.62"
+const openMeteoAirTempURL = "https://api.open-meteo.com/v1/forecast?latitude=51.54&longitude=-2.62&current=temperature_2m&temperature_unit=celsius&timezone=Europe%2FLondon"
 
 type Root struct {
 	Temps []Temp `json:"temps"`
@@ -41,7 +40,10 @@ func persistJSON(filename string, v any) {
 }
 
 func main() {
-	scrapeTemperatureAndPersist("https://www.thewave.com/live-updates/", "https://weather.com/en-GB/weather/today/l/51.54,-2.62")
+	if err := scrapeTemperatureAndPersist("https://www.thewave.com/live-updates/"); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
 }
 
 func unmarshalJSON(filename string, v any) {
@@ -51,8 +53,11 @@ func unmarshalJSON(filename string, v any) {
 	json.Unmarshal(byteValue, &v)
 }
 
-func scrapeTemperatureAndPersist(waterUrl string, airUrl string) {
-	d := scrape(waterUrl, airUrl)
+func scrapeTemperatureAndPersist(waterUrl string) error {
+	d, err := scrape(waterUrl)
+	if err != nil {
+		return err
+	}
 
 	// File will be created if it doesn't exist already
 	fn := "./temperature.json"
@@ -64,21 +69,19 @@ func scrapeTemperatureAndPersist(waterUrl string, airUrl string) {
 
 	persistJSON(fn, dx)
 
+	return nil
 }
 
-func scrape(waterUrl string, airUrl string) Temp {
+func scrape(waterUrl string) (Temp, error) {
 
-	air, err := scrapeAirTemp(airUrl)
-
+	air, err := scrapeAirTemp()
 	if err != nil {
-		fmt.Println(err)
+		return Temp{}, err
 	}
 
-	var water decimal.Decimal
-
-	water, err = scrapeWaterTemp2(waterUrl)
+	water, err := scrapeWaterTemp2(waterUrl)
 	if err != nil {
-		fmt.Println(err)
+		return Temp{}, err
 	}
 
 	// loc, _ := time.LoadLocation("Europe/London")
@@ -87,7 +90,7 @@ func scrape(waterUrl string, airUrl string) Temp {
 		// Description: out[desc],
 		Air:   air,
 		Water: water,
-	}
+	}, nil
 }
 
 // func scrapeWaterTemp(waterUrl string) decimal.Decimal {
@@ -193,84 +196,35 @@ func scrapeWaterTemp2(waterUrl string) (decimal.Decimal, error) {
 	return decimal.NewFromString(strTemp)
 }
 
-func scrapeAirTemp(url string) (decimal.Decimal, error) {
+func scrapeAirTemp() (decimal.Decimal, error) {
+	client := &http.Client{Timeout: 10 * time.Second}
+	return fetchAirTemp(client, openMeteoAirTempURL)
+}
 
-	c := colly.NewCollector(colly.Debugger(&debug.LogDebugger{}))
+func fetchAirTemp(client *http.Client, endpoint string) (decimal.Decimal, error) {
+	resp, err := client.Get(endpoint)
+	if err != nil {
+		return decimal.Zero, fmt.Errorf("request Open-Meteo air temperature: %w", err)
+	}
+	defer resp.Body.Close()
 
-	// do different stuff if reading local file
-	if strings.HasPrefix(url, "file") {
-		t := &http.Transport{}
-		t.RegisterProtocol("file", http.NewFileTransport(http.Dir(".")))
-		c.WithTransport(t)
+	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
+		return decimal.Zero, fmt.Errorf("Open-Meteo returned HTTP %s", resp.Status)
 	}
 
-	// c.OnRequest(func(r *colly.Request) {
-	// 	fmt.Println("Visiting: ", r.URL)
-	// })
-
-	body := ""
-
-	c.OnResponse(func(r *colly.Response) { //get body
-		// fmt.Println("Responding: ", string(r.Body))
-		body = string(r.Body)
-	})
-
-	// c.OnError(func(r *colly.Response, err error) {
-	// 	fmt.Println("Request URL: ", r.Request.URL, " failed with response: ", r, "\nError: ", err)
-	// })
-
-	strTemp := "0"
-
-	// "div.HourlyWeatherCard--TableWrapper--1OobO"
-
-	bFoundIt := false
-
-	c.OnHTML("div", func(d *colly.HTMLElement) {
-
-		bFoundIt = true
-
-		if strings.HasPrefix(d.Attr("class"), "HourlyWeatherCard--TableWrapper") {
-
-			d.ForEachWithBreak("div", func(_ int, p *colly.HTMLElement) bool {
-				// we only wnat the 0th item
-				strTemp = strings.ReplaceAll(p.Text, "°", "")
-				strTemp = strings.TrimSpace(strTemp)
-				return false
-			})
-		}
-
-	})
-
-	// doc, _ := goquery.NewDocumentFromReader(resp.Body)
-
-	// // Find the element containing the product list
-	// selector := doc.Find("div.products > div")
-
-	// #WxuCurrentConditions-main-b3094163-ef75-4558-8d9a-e35e6b9b1034 > div > section > div > div > div.CurrentConditions--body--r20G9 > div.CurrentConditions--columns--Bt5V8 > div.CurrentConditions--primary--A\+Brf > span
-	// /html/body/div[1]/main/div[2]/main/div[1]/div/section/div/div/div[2]/div[1]/div[1]/span
-
-	c.Visit(url)
-
-	// tA, e := decimal.NewFromString(strTemp)
-
-	// bFoundIt = false
-
-	if bFoundIt == false {
-
-		// fmt.Sprintf("%s","")
-
-		// filename := fmt.Sprintf("./htmlDmp/airTemp-%v.html", time.Now().Format(time.RFC822))
-
-		// fo, _ := os.Create(filename)
-
-		// fo.Write([]byte(body))
-
-		fmt.Print(body)
-
+	var result struct {
+		Current struct {
+			Temperature2m *float64 `json:"temperature_2m"`
+		} `json:"current"`
+	}
+	if err := json.NewDecoder(io.LimitReader(resp.Body, 1<<20)).Decode(&result); err != nil {
+		return decimal.Zero, fmt.Errorf("decode Open-Meteo air temperature response: %w", err)
+	}
+	if result.Current.Temperature2m == nil {
+		return decimal.Zero, fmt.Errorf("Open-Meteo response has no current temperature")
 	}
 
-	return decimal.NewFromString(strTemp)
-
+	return decimal.NewFromFloat(*result.Current.Temperature2m), nil
 }
 
 func addAirTempHistoric() {
